@@ -1,0 +1,71 @@
+﻿@page
+@model Steam2.Views.Shared.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Profile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Profile.Name" class="control-label"></label>
+                <input asp-for="Profile.Name" class="form-control" />
+                <span asp-validation-for="Profile.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.LoginName" class="control-label"></label>
+                <input asp-for="Profile.LoginName" class="form-control" />
+                <span asp-validation-for="Profile.LoginName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.Context" class="control-label"></label>
+                <input asp-for="Profile.Context" class="form-control" />
+                <span asp-validation-for="Profile.Context" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.Password" class="control-label"></label>
+                <input asp-for="Profile.Password" class="form-control" />
+                <span asp-validation-for="Profile.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.Country" class="control-label"></label>
+                <input asp-for="Profile.Country" class="form-control" />
+                <span asp-validation-for="Profile.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.Region" class="control-label"></label>
+                <input asp-for="Profile.Region" class="form-control" />
+                <span asp-validation-for="Profile.Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.Role" class="control-label"></label>
+                <input asp-for="Profile.Role" class="form-control" />
+                <span asp-validation-for="Profile.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.State" class="control-label"></label>
+                <input asp-for="Profile.State" class="form-control" />
+                <span asp-validation-for="Profile.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Profile.ConnecedUsers" class="control-label"></label>
+                <input asp-for="Profile.ConnecedUsers" class="form-control" />
+                <span asp-validation-for="Profile.ConnecedUsers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
