@@ -2,8 +2,10 @@
 {
     public class Game
     {
-        //public int id { get; set; }
-        //public string name { get; set; }
-        //public int  { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime PublishingDate { get; set; }
+        public double HoursPlayed { get; set; }
+        public double RecentHoursPlayer { get; set; }
     }
 }
