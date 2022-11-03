@@ -1,8 +1,10 @@
-﻿namespace Steam2.Models
+﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+
+namespace Steam2.Models
 {
     public class Profile
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string LoginName { get; set; }
         public string Context { get; set; }
@@ -14,7 +16,12 @@
 
         public Profile()
         {
-            State = "not defined";
+
+        }
+
+        public bool Exists()
+        {
+            return this != null;
         }
     }
 }

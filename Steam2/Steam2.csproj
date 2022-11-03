@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Steam2-DF369096-3038-40F2-A34E-9BD920A74273</UserSecretsId>
+    <UserSecretsId>aspnet-Steam2-824FA80E-B7FA-4115-BF79-D9D9CF81BCE1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

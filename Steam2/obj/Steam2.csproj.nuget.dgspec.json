@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {}
+    "C:\\Users\\timis\\source\\repos\\Steam2\\Steam2\\Steam2\\Steam2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {
+    "C:\\Users\\timis\\source\\repos\\Steam2\\Steam2\\Steam2\\Steam2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
+        "projectUniqueName": "C:\\Users\\timis\\source\\repos\\Steam2\\Steam2\\Steam2\\Steam2.csproj",
         "projectName": "Steam2",
-        "projectPath": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
+        "projectPath": "C:\\Users\\timis\\source\\repos\\Steam2\\Steam2\\Steam2\\Steam2.csproj",
         "packagesPath": "C:\\Users\\timis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\obj\\",
+        "outputPath": "C:\\Users\\timis\\source\\repos\\Steam2\\Steam2\\Steam2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\timis\\AppData\\Roaming\\NuGet\\NuGet.Config",

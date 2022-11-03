@@ -1,77 +1,72 @@
-﻿@model IEnumerable<Steam2.Models.Profile>
+﻿@model Steam2.Models.Profile
 
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Details";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+@if (Model != null)
+{
+    <h1>Details</h1>
+    <div>
+        <h4>Profile</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.LoginName)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LoginName)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Context)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Context)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Region)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Region)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.State)
+            </dd>
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ConnecedUsers)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoginName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Context)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConnecedUsers)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ConnecedUsers)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+    </div>
 }
-    </tbody>
-</table>
+else{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}

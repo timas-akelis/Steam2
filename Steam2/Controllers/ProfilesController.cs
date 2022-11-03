@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Steam2.Data;
+using Steam2.Data.Migrations;
 using Steam2.Models;
 
 namespace Steam2.Controllers
@@ -20,13 +23,25 @@ namespace Steam2.Controllers
         }
 
         // GET: Profiles
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Profile.ToListAsync());
+
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = await _context.Profile
+                    .FirstOrDefaultAsync(m => m.Id == UserId);
+
+                return View(profile);
+            }
+
+            return NotFound();
         }
 
         // GET: Profiles/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Profile == null)
             {
@@ -44,6 +59,7 @@ namespace Steam2.Controllers
         }
 
         // GET: Profiles/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,19 +70,23 @@ namespace Steam2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LoginName,Context,Country,Region,Role,ConnecedUsers")] Profile profile)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,Name,LoginName,Context,Country,Region,Role,State,ConnecedUsers")] Profile profile)
         {
-            if (ModelState.IsValid)
+            profile.Id = GetId();
+
+            if (profile.Id != string.Empty)
             {
                 _context.Add(profile);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(profile);
+
+            return NotFound();
         }
 
         // GET: Profiles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Profile == null)
             {
@@ -86,7 +106,7 @@ namespace Steam2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LoginName,Context,Password,Country,Region,Role,State,ConnecedUsers")] Profile profile)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,LoginName,Context,Country,Region,Role,State,ConnecedUsers")] Profile profile)
         {
             if (id != profile.Id)
             {
@@ -117,7 +137,7 @@ namespace Steam2.Controllers
         }
 
         // GET: Profiles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Profile == null)
             {
@@ -137,7 +157,7 @@ namespace Steam2.Controllers
         // POST: Profiles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Profile == null)
             {
@@ -153,9 +173,38 @@ namespace Steam2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProfileExists(int id)
+        private bool ProfileExists(string id)
         {
           return _context.Profile.Any(e => e.Id == id);
         }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
+        }
+
+
+        // ----------------------- Other Controllers ------------------------------------------
+
+        // GET: Profiles
+        [Authorize]
+        public IActionResult CartIndex()
+        {
+
+            return View();
+        }
+
     }
 }
