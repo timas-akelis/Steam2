@@ -7,5 +7,11 @@
         public DateTime PublishingDate { get; set; }
         public double HoursPlayed { get; set; }
         public double RecentHoursPlayer { get; set; }
+
+        public Game()
+        {
+
+        }
     }
+
 }

@@ -4,7 +4,7 @@
 
 namespace Steam2.Data.Migrations
 {
-    public partial class InitialSetup : Migration
+    public partial class Mig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

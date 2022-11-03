@@ -27,18 +27,18 @@ namespace Steam2.Controllers
         public async Task<IActionResult> IndexAsync()
         {
 
-            var UserId = GetId();
+            //var UserId = GetId();
 
-            if (UserId == null)
-                return View();
+            //if (UserId == null)
+            //    return View();
 
-            if (UserId != string.Empty)
-            {
-                var profile = await _context.Profile
-                    .FirstOrDefaultAsync(m => m.Id == UserId);
+            //if (UserId != string.Empty)
+            //{
+            //    var profile = await _context.Profile
+            //        .FirstOrDefaultAsync(m => m.Id == UserId);
 
-                return View(profile);
-            }
+            //    return View(profile);
+            //}
 
             return View();
         }

@@ -12,8 +12,8 @@ using Steam2.Data;
 namespace Steam2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221103190950_Cart")]
-    partial class Cart
+    [Migration("20221103194548_Mig")]
+    partial class Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

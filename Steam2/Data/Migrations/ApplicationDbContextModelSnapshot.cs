@@ -241,6 +241,32 @@ namespace Steam2.Data.Migrations
                     b.ToTable("Cart");
                 });
 
+            modelBuilder.Entity("Steam2.Models.Game", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<double>("HoursPlayed")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("PublishingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("RecentHoursPlayer")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Game");
+                });
+
             modelBuilder.Entity("Steam2.Models.Profile", b =>
                 {
                     b.Property<string>("Id")
