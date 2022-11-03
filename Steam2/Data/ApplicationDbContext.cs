@@ -11,5 +11,6 @@ namespace Steam2.Data
         {
         }
         public DbSet<Steam2.Models.Profile> Profile { get; set; }
+        public DbSet<Steam2.Models.Cart> Cart { get; set; }
     }
 }
