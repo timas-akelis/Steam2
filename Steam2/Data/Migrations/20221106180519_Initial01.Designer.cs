@@ -12,8 +12,8 @@ using Steam2.Data;
 namespace Steam2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221103194548_Mig")]
-    partial class Mig
+    [Migration("20221106180519_Initial01")]
+    partial class Initial01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,29 +226,12 @@ namespace Steam2.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Steam2.Models.Cart", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal>("FullPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("GamesID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cart");
-                });
-
             modelBuilder.Entity("Steam2.Models.Profile", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ConnecedUsers")
+                    b.Property<int>("ConnectedUsers")
                         .HasColumnType("int");
 
                     b.Property<string>("Context")

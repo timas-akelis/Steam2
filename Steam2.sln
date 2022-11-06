@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam2", "Steam2\Steam2.csproj", "{0DF0FC90-320D-4D0E-A265-7C38B798BA9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam2", "Steam2\Steam2.csproj", "{CEA0BD18-7332-4404-8A8D-1244432F797D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0DF0FC90-320D-4D0E-A265-7C38B798BA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DF0FC90-320D-4D0E-A265-7C38B798BA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DF0FC90-320D-4D0E-A265-7C38B798BA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DF0FC90-320D-4D0E-A265-7C38B798BA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA0BD18-7332-4404-8A8D-1244432F797D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA0BD18-7332-4404-8A8D-1244432F797D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA0BD18-7332-4404-8A8D-1244432F797D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA0BD18-7332-4404-8A8D-1244432F797D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {256C0EDB-790A-47D5-A988-62B7C8218C9C}
+		SolutionGuid = {2F03DFD4-0091-4E8C-BE44-211308F7AB39}
 	EndGlobalSection
 EndGlobal

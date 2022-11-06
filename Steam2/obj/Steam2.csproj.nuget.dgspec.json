@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {}
+    "C:\\Users\\timis\\source\\repos\\New Steam2\\Steam2\\Steam2\\Steam2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {
+    "C:\\Users\\timis\\source\\repos\\New Steam2\\Steam2\\Steam2\\Steam2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
+        "projectUniqueName": "C:\\Users\\timis\\source\\repos\\New Steam2\\Steam2\\Steam2\\Steam2.csproj",
         "projectName": "Steam2",
-        "projectPath": "C:\\Users\\User\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Steam2\\Steam2\\obj\\",
+        "projectPath": "C:\\Users\\timis\\source\\repos\\New Steam2\\Steam2\\Steam2\\Steam2.csproj",
+        "packagesPath": "C:\\Users\\timis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\timis\\source\\repos\\New Steam2\\Steam2\\Steam2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\timis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +73,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -89,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

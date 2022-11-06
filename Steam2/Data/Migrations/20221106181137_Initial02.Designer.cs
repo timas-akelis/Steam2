@@ -12,8 +12,8 @@ using Steam2.Data;
 namespace Steam2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221103195302_Games")]
-    partial class Games
+    [Migration("20221106181137_Initial02")]
+    partial class Initial02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -231,8 +231,8 @@ namespace Steam2.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<decimal>("FullPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("GamesID")
                         .IsRequired()
@@ -245,17 +245,32 @@ namespace Steam2.Data.Migrations
 
             modelBuilder.Entity("Steam2.Models.Game", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Developer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("HoursPlayed")
                         .HasColumnType("float");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Publisher")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("PublishingDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<double>("RecentHoursPlayer")
                         .HasColumnType("float");
@@ -274,7 +289,7 @@ namespace Steam2.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ConnecedUsers")
+                    b.Property<int>("ConnectedUsers")
                         .HasColumnType("int");
 
                     b.Property<string>("Context")

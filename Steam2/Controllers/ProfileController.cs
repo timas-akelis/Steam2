@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,16 +12,17 @@ using Steam2.Models;
 
 namespace Steam2.Controllers
 {
-    public class CartController : Controller
+    public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CartController(ApplicationDbContext context)
+        public ProfileController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Cart
+        // GET: Profile
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var UserId = GetId();
@@ -36,70 +38,75 @@ namespace Steam2.Controllers
             return NotFound();
         }
 
-        // GET: Cart/Details/5
+        // GET: Profile/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.Profile == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart
+            var profile = await _context.Profile
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
+            if (profile == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(profile);
         }
 
-        // GET: Cart/Create
+        // GET: Profiles/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cart/Create
+        // POST: Profiles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GamesID,FullPrice")] Cart cart)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,Name,LoginName,Context,Country,Region,Role,State,ConnecedUsers")] Profile profile)
         {
-            if (ModelState.IsValid)
+            profile.Id = GetId();
+
+            if (profile.Id != string.Empty)
             {
-                _context.Add(cart);
+                _context.Add(profile);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cart);
+
+            return NotFound();
         }
 
-        // GET: Cart/Edit/5
+        // GET: Profile/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.Profile == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart.FindAsync(id);
-            if (cart == null)
+            var profile = await _context.Profile.FindAsync(id);
+            if (profile == null)
             {
                 return NotFound();
             }
-            return View(cart);
+            return View(profile);
         }
 
-        // POST: Cart/Edit/5
+        // POST: Profile/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,GamesID,FullPrice")] Cart cart)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,LoginName,Context,Country,Region,Role,State,ConnectedUsers")] Profile profile)
         {
-            if (id != cart.Id)
+            if (id != profile.Id)
             {
                 return NotFound();
             }
@@ -108,12 +115,12 @@ namespace Steam2.Controllers
             {
                 try
                 {
-                    _context.Update(cart);
+                    _context.Update(profile);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CartExists(cart.Id))
+                    if (!ProfileExists(profile.Id))
                     {
                         return NotFound();
                     }
@@ -124,49 +131,49 @@ namespace Steam2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cart);
+            return View(profile);
         }
 
-        // GET: Cart/Delete/5
+        // GET: Profile/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Cart == null)
+            if (id == null || _context.Profile == null)
             {
                 return NotFound();
             }
 
-            var cart = await _context.Cart
+            var profile = await _context.Profile
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
+            if (profile == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(profile);
         }
 
-        // POST: Cart/Delete/5
+        // POST: Profile/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Cart == null)
+            if (_context.Profile == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Cart'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Profile'  is null.");
             }
-            var cart = await _context.Cart.FindAsync(id);
-            if (cart != null)
+            var profile = await _context.Profile.FindAsync(id);
+            if (profile != null)
             {
-                _context.Cart.Remove(cart);
+                _context.Profile.Remove(profile);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CartExists(string id)
+        private bool ProfileExists(string id)
         {
-          return _context.Cart.Any(e => e.Id == id);
+          return _context.Profile.Any(e => e.Id == id);
         }
 
         private string GetId()

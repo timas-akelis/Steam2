@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-
-namespace Steam2.Models
+﻿namespace Steam2.Models
 {
     public class Profile
     {
@@ -12,7 +10,7 @@ namespace Steam2.Models
         public string Region { get; set; }
         public string Role { get; set; }
         public string State { get; set; }
-        public int ConnecedUsers { get; set; }
+        public int ConnectedUsers { get; set; }
 
         public Profile()
         {
