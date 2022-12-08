@@ -8,6 +8,8 @@ namespace Steam2.Models
         public string GamesID { get; set; }
         public string ProfileID { get; set; }
         public DateTime Date { get; set; }
+        public double HoursPlayed { get; set; }
+        public double RecentHoursPlayer { get; set; }
 
         public Library() { }
     }

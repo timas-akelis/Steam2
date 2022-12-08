@@ -54,7 +54,7 @@ namespace Steam2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,PublishingDate,HoursPlayed,RecentHoursPlayer,Price,Rating,Description,Developer,Publisher")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,Title,PublishingDate,Price,Rating,Description,Developer,Publisher,SaleId")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Steam2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,PublishingDate,HoursPlayed,RecentHoursPlayer,Price,Rating,Description,Developer,Publisher")] Game game)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,PublishingDate,Price,Rating,Description,Developer,Publisher,SaleId")] Game game)
         {
             if (id != game.Id)
             {

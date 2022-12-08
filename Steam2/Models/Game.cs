@@ -5,8 +5,6 @@
         public string Id { get; set; }
         public string Title { get; set; }
         public DateTime PublishingDate { get; set; }
-        public double HoursPlayed { get; set; }
-        public double RecentHoursPlayer { get; set; }
         public decimal Price { get; set; }
         public double Rating { get; set; }
         public string Description { get; set; }
