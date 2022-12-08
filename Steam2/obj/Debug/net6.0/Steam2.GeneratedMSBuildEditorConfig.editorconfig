@@ -8,125 +8,245 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Steam2
 build_property.RootNamespace = Steam2
-build_property.ProjectDir = C:\Users\timis\source\repos\New Steam2\Steam2\Steam2\
+build_property.ProjectDir = C:\Users\timis\OneDrive\Desktop\Steam2\Steam2\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\timis\source\repos\New Steam2\Steam2\Steam2
+build_property.MSBuildProjectDirectory = C:\Users\timis\OneDrive\Desktop\Steam2\Steam2
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Carts/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Achievements/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNoaWV2ZW1lbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Carts/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGVsZXRlLmNzaHRtbA==
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Achievements/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNoaWV2ZW1lbnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Carts/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRGV0YWlscy5jc2h0bWw=
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Achievements/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNoaWV2ZW1lbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Carts/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcRWRpdC5jc2h0bWw=
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Achievements/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNoaWV2ZW1lbnRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Carts/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Achievements/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNoaWV2ZW1lbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Games/Create.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Comments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Comments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Comments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Comments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Comments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Games/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Games/Delete.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Games/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Games/Details.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Games/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Games/Edit.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Games/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Games/Index.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Games/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Home/Index.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Genres/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Genres/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Genres/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Genres/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Genres/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Home/Privacy.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Profile/Create.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Librarie/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyaWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Librarie/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyaWVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Librarie/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyaWVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Librarie/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyaWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Librarie/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyaWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Orders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Orders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Orders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Orders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Profile/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Profile/Delete.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Profile/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Profile/Details.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Profile/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Profile/Edit.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Profile/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Profile/Index.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Shared/Error.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Sales/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Sales/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Sales/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Sales/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Sales/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Wishlist/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Wishlists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Wishlist/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcRGVsZXRlLmNzaHRtbA==
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Wishlists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Wishlist/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcRGV0YWlscy5jc2h0bWw=
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Wishlists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Wishlist/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcRWRpdC5jc2h0bWw=
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Wishlists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Wishlist/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcSW5kZXguY3NodG1s
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Wishlists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/_ViewImports.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/_ViewStart.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/timis/source/repos/New Steam2/Steam2/Steam2/Views/Shared/_Layout.cshtml]
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-htmclzzqvb

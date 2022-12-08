@@ -1,0 +1,73 @@
+﻿@model Steam2.Models.Achievement
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Achievement</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GamesID" class="control-label"></label>
+                <input asp-for="GamesID" class="form-control" />
+                <span asp-validation-for="GamesID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfileID" class="control-label"></label>
+                <input asp-for="ProfileID" class="form-control" />
+                <span asp-validation-for="ProfileID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Icon" class="control-label"></label>
+                <input asp-for="Icon" class="form-control" />
+                <span asp-validation-for="Icon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achieved" class="control-label"></label>
+                <input asp-for="Achieved" class="form-control" />
+                <span asp-validation-for="Achieved" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Acquired" /> @Html.DisplayNameFor(model => model.Acquired)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerPerc" class="control-label"></label>
+                <input asp-for="PlayerPerc" class="form-control" />
+                <span asp-validation-for="PlayerPerc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
