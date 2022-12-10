@@ -36,6 +36,10 @@ namespace Steam2.Controllers
                     {
                         ViewData["Admin"] = "Yes";
                     }
+                    if (profile.Role == "Creator")
+                    {
+                        ViewData["Creator"] = "Yes";
+                    }
                 }
             }
             var wish = _context.Wishlist.Where(x => x.ProfileID == GetId()).ToList();

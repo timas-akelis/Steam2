@@ -1,46 +1,54 @@
-﻿@model IEnumerable<Steam2.Models.Game>
+﻿@model Steam2.Models.ViewModels.GamesSales
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (ViewData["Creator"] != null)
+{
+    <p>
+        <a asp-action="Create">Upload a game</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Games[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PublishingDate)
+                @Html.DisplayNameFor(model => model.Games[0].PublishingDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Games[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rating)
+                @Html.DisplayNameFor(model => model.Games[0].Rating)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Games[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Developer)
+                @Html.DisplayNameFor(model => model.Games[0].Developer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Publisher)
+                @Html.DisplayNameFor(model => model.Games[0].Publisher)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SaleId)
-            </th>
+            @if (ViewData["Admin"] != null)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Games[0].SaleId)
+                </th>
+                <th>
+                    Sale actions
+                </th>
+            }
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model.Games) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -63,15 +71,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Publisher)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SaleId)
+            @if (ViewData["Admin"] != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleId)
+                </td>
+                <td>
+                @foreach (var sale in Model.Sales)
+                {
+                    <a asp-action="AddSaleId" asp-route-SaleId="@sale.Id" asp-route-GameId="@item.Id">Add to @sale.Name | </a>
+
+                }                <a asp-action="RemoveSaleId" asp-route-GameId="@item.Id">Remove from sale | </a>
             </td>
+            }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="AddWishlist" asp-route-id="@item.Id">Add to Wishlist</a>
-                <a asp-action="AddToLibrary" asp-route-id="@item.Id">BUY</a>
+                <a asp-action="AddWishlist" asp-route-id="@item.Id">Add to Wishlist</a> |
+                    <a asp-action="AddToLibrary" asp-route-id="@item.Id">BUY</a> |
+                
             </td>
         </tr>
 }

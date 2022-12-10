@@ -37,6 +37,10 @@ namespace Steam2.Controllers
                     {
                         ViewData["Admin"] = "Yes";
                     }
+                    if (profile.Role == "Creator")
+                    {
+                        ViewData["Creator"] = "Yes";
+                    }
                 }
             }
 
@@ -175,7 +179,7 @@ namespace Steam2.Controllers
             Sales sale = _context.Sales.Where(s => s.Id == game.SaleId).FirstOrDefault();
             if (sale == null) return game.Price;
 
-            return game.Price - (game.Price * sale.Amount);
+            return game.Price - (game.Price * sale.Amount/100);
         }
 
         public async Task<IActionResult> Delete(string id)

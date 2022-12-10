@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Steam2.Data;
 using Steam2.Models;
+using Steam2.Models.ViewModels;
 
 namespace Steam2.Controllers
 {
@@ -37,9 +38,14 @@ namespace Steam2.Controllers
                     {
                         ViewData["Admin"] = "Yes";
                     }
+                    if (profile.Role == "Creator")
+                    {
+                        ViewData["Creator"] = "Yes";
+                    }
                 }
             }
-            return View(await _context.Game.ToListAsync());
+            GamesSales VM = new GamesSales(_context.Game.ToList(), _context.Sales.ToList());
+            return View(VM);
         }
 
         // GET: Games/Details/5
@@ -58,6 +64,32 @@ namespace Steam2.Controllers
             }
 
             return View(game);
+        }
+
+        public async Task<IActionResult> AddSaleId(string SaleId, string GameId)
+        {
+            //_context.Update()
+            Game saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
+            if (saleGame != null)
+            {
+                saleGame.SaleId = SaleId;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> RemoveSaleId(string SaleId, string GameId)
+        {
+            //_context.Update()
+            Game saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
+            if (saleGame != null)
+            {
+                saleGame.SaleId = "";
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> AddToLibrary(string Id)
@@ -94,6 +126,7 @@ namespace Steam2.Controllers
         {
             game.Id = Extension.CreateId();
             game.SaleId = "None";
+            game.PublishingDate = DateTime.Now;
 
             _context.Add(game);
             await _context.SaveChangesAsync();

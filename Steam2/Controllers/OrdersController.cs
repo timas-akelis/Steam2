@@ -24,7 +24,26 @@ namespace Steam2.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Order.ToListAsync());
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                    if (profile.Role == "Creator")
+                    {
+                        ViewData["Creator"] = "Yes";
+                    }
+                }
+            }
+            return View(await _context.Order.ToListAsync());
         }
 
         // GET: Orders/Details/5
@@ -83,7 +102,7 @@ namespace Steam2.Controllers
             Sales sale = _context.Sales.Where(s => s.Id == game.SaleId).FirstOrDefault();
             if (sale == null) return game.Price;
 
-            return game.Price - (game.Price * sale.Amount);
+            return game.Price - (game.Price * sale.Amount/100);
         }
 
         private string GetId()

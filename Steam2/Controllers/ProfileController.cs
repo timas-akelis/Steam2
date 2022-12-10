@@ -38,6 +38,10 @@ namespace Steam2.Controllers
                     {
                         ViewData["Admin"] = "Yes";
                     }
+                    if (profile.Role == "Creator")
+                    {
+                        ViewData["Creator"] = "Yes";
+                    }
                 }
 
                 return View(profile);
