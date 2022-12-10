@@ -1,0 +1,12 @@
+﻿@model List<Game>
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<h1>Confirm the buyment:</h1>
+Do you want to buy these games:
+
+list games
+
+Total price with sales: @ViewBag.Message
+<a asp-action="ConfirmTransaction">Confirm buyment</a>

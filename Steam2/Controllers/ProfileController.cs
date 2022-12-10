@@ -32,6 +32,14 @@ namespace Steam2.Controllers
                 var profile = await _context.Profile
                     .FirstOrDefaultAsync(m => m.Id == UserId);
 
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+
                 return View(profile);
             }
 
@@ -76,6 +84,10 @@ namespace Steam2.Controllers
             if (profile.Id != string.Empty)
             {
                 _context.Add(profile);
+                if (profile.Role == "Admin")
+                {
+                    ViewData["Admin"] = "Yes";
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

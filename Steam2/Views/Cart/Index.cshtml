@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Steam2.Models.Cart>
+﻿@model List<Tuple<Game, Cart>>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,20 +6,19 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GamesID)
+                @Html.DisplayNameFor(model => model[0].Item1.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProfileID)
+                @Html.DisplayNameFor(model => model[0].Item1.Price) <!-- MAKE SALES AFFECT THE VALUE SOMEHOW-->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model[0].Item2.Date)
             </th>
             <th></th>
         </tr>
@@ -28,20 +27,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GamesID)
+                @Html.DisplayFor(modelItem => item.Item1.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProfileID)
+                    @Html.DisplayFor(modelItem => item.Item1.Price) <!-- MAKE SALES AFFECT THE VALUE SOMEHOW-->
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.DisplayFor(modelItem => item.Item2.Date)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Item2.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Item2.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Item2.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Transaction">Confirm</a>
+</p>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,7 +23,29 @@ namespace Steam2.Controllers
         // GET: Wishlists
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Wishlist.ToListAsync());
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+            }
+            var wish = _context.Wishlist.Where(x => x.ProfileID == GetId()).ToList();
+            List<Game> allGames = new List<Game>();
+            for(int i = 0; i < wish.Count; i++)
+            {
+                var game = _context.Game.Where(x => x.Id == wish[i].GamesID).FirstOrDefault();
+                if (game != null) allGames.Add(game);
+            }
+            return View(allGames);
         }
 
         // GET: Wishlists/Details/5
@@ -43,26 +66,32 @@ namespace Steam2.Controllers
             return View(wishlist);
         }
 
-        // GET: Wishlists/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Wishlists/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Wishlists/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GamesID,ProfileID,Date")] Wishlist wishlist)
+        public async Task<IActionResult> Create(string GameId)
         {
-            if (ModelState.IsValid)
+            Wishlist wishlist = new Wishlist();
+            wishlist.Id = Extension.CreateId();
+            wishlist.ProfileID = GetId();
+            wishlist.GamesID = GameId;
+            wishlist.Date = DateTime.Now;
+
+            var dup = _context.Wishlist.Where(m => m.GamesID == GameId).Any();
+            if (!dup)
             {
                 _context.Add(wishlist);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(wishlist);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Wishlists/Edit/5
@@ -113,25 +142,28 @@ namespace Steam2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(wishlist);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Wishlists/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string Id)
         {
-            if (id == null || _context.Wishlist == null)
+            if (Id == null || _context.Wishlist == null)
             {
                 return NotFound();
             }
 
             var wishlist = await _context.Wishlist
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.GamesID == Id);
             if (wishlist == null)
             {
                 return NotFound();
             }
 
-            return View(wishlist);
+            _context.Wishlist.Remove(wishlist);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Wishlists/Delete/5
@@ -156,6 +188,23 @@ namespace Steam2.Controllers
         private bool WishlistExists(string id)
         {
           return _context.Wishlist.Any(e => e.Id == id);
+        }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

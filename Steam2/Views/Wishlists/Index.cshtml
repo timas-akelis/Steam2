@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Steam2.Models.Wishlist>
+﻿@model List<Steam2.Models.Game>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,20 +6,14 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GamesID)
+                @Html.DisplayNameFor(model => model[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProfileID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model[0].Price)
             </th>
             <th></th>
         </tr>
@@ -28,18 +22,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GamesID)
+                    @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProfileID)
+                    @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Remove from wishlist</a>
             </td>
         </tr>
 }

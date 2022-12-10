@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,27 +45,65 @@ namespace Steam2.Controllers
             return View(order);
         }
 
-        // GET: Orders/Create
-        public IActionResult Create()
+
+
+
+        public async Task<IActionResult> Create(string BoughtGames)
         {
-            return View();
+            var boughtGamesList = System.Text.Json.JsonSerializer.Deserialize<List<Game>>(BoughtGames);
+
+            StringBuilder buildID = new StringBuilder();
+            decimal total = 0;
+            foreach (var game in boughtGamesList)
+            {
+                buildID.Append(game.Id);
+                buildID.Append(";");
+                total += GetPriceWithSale(game.Id);  //I HOPE YOU REMEMBER TO FIX THIS ONCE YOU GO IMPLEMENTING SALES ROCKMAN
+                                                     //Well, I think I did
+            }
+            buildID.Remove(buildID.Length - 1, 1);
+
+            Order newOrder = new Order();
+            newOrder.Id = Extension.CreateId();
+            newOrder.ProfileID = GetId();
+            newOrder.Date = DateTime.Now;
+            newOrder.Amount = total;
+            newOrder.GameIDs = buildID.ToString();
+
+            _context.Add(newOrder);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Librarie");
         }
 
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GamesID,ProfileID,Date,Amount")] Order order)
+        private decimal GetPriceWithSale(string GameId)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(order);
+            Game game = _context.Game.Where(m => m.Id == GameId).FirstOrDefault();
+            if (game == null) return 0;
+
+            Sales sale = _context.Sales.Where(s => s.Id == game.SaleId).FirstOrDefault();
+            if (sale == null) return game.Price;
+
+            return game.Price - (game.Price * sale.Amount);
         }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
+        }
+
+        /*
 
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(string id)
@@ -86,7 +126,7 @@ namespace Steam2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,GamesID,ProfileID,Date,Amount")] Order order)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,GameIDs,ProfileID,Date,Amount")] Order order)
         {
             if (id != order.Id)
             {
@@ -156,6 +196,8 @@ namespace Steam2.Controllers
         private bool OrderExists(string id)
         {
           return _context.Order.Any(e => e.Id == id);
-        }
+        }*/
+
+
     }
 }
