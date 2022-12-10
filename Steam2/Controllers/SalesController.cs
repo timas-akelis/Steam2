@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,7 +23,22 @@ namespace Steam2.Controllers
         // GET: Sales
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Sales.ToListAsync());
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+            }
+            return View(await _context.Sales.ToListAsync());
         }
 
         // GET: Sales/Details/5
@@ -156,6 +172,23 @@ namespace Steam2.Controllers
         private bool SalesExists(string id)
         {
           return _context.Sales.Any(e => e.Id == id);
+        }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

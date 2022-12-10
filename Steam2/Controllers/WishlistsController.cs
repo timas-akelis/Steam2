@@ -23,6 +23,21 @@ namespace Steam2.Controllers
         // GET: Wishlists
         public async Task<IActionResult> Index()
         {
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+            }
             var wish = _context.Wishlist.Where(x => x.ProfileID == GetId()).ToList();
             List<Game> allGames = new List<Game>();
             for(int i = 0; i < wish.Count; i++)

@@ -24,7 +24,22 @@ namespace Steam2.Controllers
         // GET: Games
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Game.ToListAsync());
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+            }
+            return View(await _context.Game.ToListAsync());
         }
 
         // GET: Games/Details/5

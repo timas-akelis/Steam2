@@ -21,14 +21,25 @@ namespace Steam2.Controllers
             _context = context;
         }
 
-        
-
-
-
-
         // GET: Cart
         public async Task<IActionResult> Index()
         {
+            var UserId = GetId();
+
+            if (UserId != string.Empty)
+            {
+                var profile = _context.Profile
+                    .FirstOrDefault(m => m.Id == UserId);
+
+                if (profile != null)
+                {
+                    if (profile.Role == "Admin")
+                    {
+                        ViewData["Admin"] = "Yes";
+                    }
+                }
+            }
+
             var carta = _context.Cart.Where(x => x.ProfileID == GetId()).ToList();
             List<Game> allGames = new List<Game>();
             for (int i = 0; i < carta.Count; i++)
