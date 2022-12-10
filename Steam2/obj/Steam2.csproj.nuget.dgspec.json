@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {}
+    "C:\\Users\\Rokas\\Desktop\\SteamDos\\Steam_FixedModels1\\Steam2\\Steam2\\Steam2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj": {
+    "C:\\Users\\Rokas\\Desktop\\SteamDos\\Steam_FixedModels1\\Steam2\\Steam2\\Steam2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
+        "projectUniqueName": "C:\\Users\\Rokas\\Desktop\\SteamDos\\Steam_FixedModels1\\Steam2\\Steam2\\Steam2.csproj",
         "projectName": "Steam2",
-        "projectPath": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\Steam2.csproj",
-        "packagesPath": "C:\\Users\\timis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\timis\\OneDrive\\Desktop\\Steam2\\Steam2\\obj\\",
+        "projectPath": "C:\\Users\\Rokas\\Desktop\\SteamDos\\Steam_FixedModels1\\Steam2\\Steam2\\Steam2.csproj",
+        "packagesPath": "C:\\Users\\Rokas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rokas\\Desktop\\SteamDos\\Steam_FixedModels1\\Steam2\\Steam2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\timis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rokas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

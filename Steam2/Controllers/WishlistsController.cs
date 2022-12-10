@@ -23,15 +23,12 @@ namespace Steam2.Controllers
         // GET: Wishlists
         public async Task<IActionResult> Index()
         {
-            var wish = _context.Wishlist.ToList();
+            var wish = _context.Wishlist.Where(x => x.ProfileID == GetId()).ToList();
             List<Game> allGames = new List<Game>();
             for(int i = 0; i < wish.Count; i++)
             {
-                var games = _context.Game.Where(x => x.Id == wish[i].GamesID).ToList();
-                for (int j = 0; j < games.Count; j++)
-                {
-                    allGames.Add(games[j]);
-                }
+                var game = _context.Game.Where(x => x.Id == wish[i].GamesID).FirstOrDefault();
+                if (game != null) allGames.Add(game);
             }
             return View(allGames);
         }
@@ -66,7 +63,7 @@ namespace Steam2.Controllers
         public async Task<IActionResult> Create(string GameId)
         {
             Wishlist wishlist = new Wishlist();
-            wishlist.Id = CreateId();
+            wishlist.Id = Extension.CreateId();
             wishlist.ProfileID = GetId();
             wishlist.GamesID = GameId;
             wishlist.Date = DateTime.Now;
@@ -176,21 +173,6 @@ namespace Steam2.Controllers
         private bool WishlistExists(string id)
         {
           return _context.Wishlist.Any(e => e.Id == id);
-        }
-
-        private string CreateId()
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[32];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-            return finalString;
         }
 
         private string GetId()

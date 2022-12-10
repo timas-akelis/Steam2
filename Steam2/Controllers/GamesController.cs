@@ -45,6 +45,23 @@ namespace Steam2.Controllers
             return View(game);
         }
 
+        public async Task<IActionResult> AddToLibrary(string Id)
+        {
+            //Library newGame = new Library();
+            //newGame.Id = CreateId();
+            //newGame.ProfileID = GetId();
+            //newGame.GamesID = Id;
+            //newGame.Date = DateTime.Now;
+            //newGame.HoursPlayed = 0;
+            //newGame.RecentHoursPlayer = 0;
+            //string ProfileId = GetId();
+            //return RedirectToAction("Create", "Librarie", new { newGame = newGame});
+
+            //return RedirectToAction("Create", "Librarie", new { GameId = Id });
+
+            return RedirectToAction("Create", "Cart", new { GameId = Id });
+        }
+
         // GET: Games/Create
         [Authorize]
         public IActionResult Create()
@@ -60,7 +77,7 @@ namespace Steam2.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Title,PublishingDate,Price,Rating,Description,Developer,Publisher,SaleId")] Game game)
         {
-            game.Id = CreateId();
+            game.Id = Extension.CreateId();
             game.SaleId = "None";
 
             _context.Add(game);
@@ -183,21 +200,6 @@ namespace Steam2.Controllers
         private bool GameExists(string id)
         {
           return _context.Game.Any(e => e.Id == id);
-        }
-
-        private string CreateId()
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[32];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-            return finalString;
         }
 
         private string GetId()

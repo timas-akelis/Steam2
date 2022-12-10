@@ -417,7 +417,7 @@ namespace Steam2.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("GamesID")
+                    b.Property<string>("GameIDs")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
