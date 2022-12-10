@@ -165,19 +165,16 @@ namespace Steam2.Controllers
         [Authorize]
         public async Task<IActionResult> AddWishlist(string id)
         {
-            //if (id == null || _context.Game == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var game = await _context.Game.FindAsync(id);
-            //if (game == null)
-            //{
-            //    return NotFound();
-            //}
-            //return NotFound();
             string ProfileId = GetId();
             return RedirectToAction("Create", "Wishlists", new { GameId = id });
+        }
+
+        // POST: Games/AddWishlist/5
+        [Authorize]
+        public async Task<IActionResult> AddCart(string id)
+        {
+            string ProfileId = GetId();
+            return RedirectToAction("Create", "Cart", new { GameId = id });
         }
 
         private bool GameExists(string id)

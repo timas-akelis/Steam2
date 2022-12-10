@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +22,11 @@ namespace Steam2.Controllers
         }
 
         // GET: Wishlists
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            var wish = _context.Wishlist.ToList();
+            var ProfileId = GetId();
+            var wish = _context.Wishlist.Where(a => a.ProfileID == ProfileId).ToList();
             List<Game> allGames = new List<Game>();
             for(int i = 0; i < wish.Count; i++)
             {
@@ -154,24 +157,24 @@ namespace Steam2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: Wishlists/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Wishlist == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Wishlist'  is null.");
-            }
-            var wishlist = await _context.Wishlist.FindAsync(id);
-            if (wishlist != null)
-            {
-                _context.Wishlist.Remove(wishlist);
-            }
+        //// POST: Wishlists/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(string id)
+        //{
+        //    if (_context.Wishlist == null)
+        //    {
+        //        return Problem("Entity set 'ApplicationDbContext.Wishlist'  is null.");
+        //    }
+        //    var wishlist = await _context.Wishlist.FindAsync(id);
+        //    if (wishlist != null)
+        //    {
+        //        _context.Wishlist.Remove(wishlist);
+        //    }
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         private bool WishlistExists(string id)
         {
