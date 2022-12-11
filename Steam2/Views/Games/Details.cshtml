@@ -67,7 +67,7 @@
     <table class="table">
         <h4>Comments</h4>
         <tbody>
-            @foreach (var item in Model.comments){
+            @foreach (var item in Model.Comment){
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProfileID)
@@ -81,6 +81,6 @@
     </table>
 </div>
 <div>
-    <a asp-action="CreateComment" asp-route-id="@Model.game.Id">Create comment</a>
+    <a asp-action="CreateComment" asp-route-id="@Model.Game.Id">Create comment</a>
     <a asp-action="Index">Back to List</a>
 </div>

@@ -147,7 +147,7 @@ namespace Steam2.Controllers
         public async Task<IActionResult> AddSaleId(string SaleId, string GameId)
         {
             //_context.Update()
-            Game saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
+            Game? saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
             if (saleGame != null)
             {
                 saleGame.SaleId = SaleId;
@@ -160,7 +160,7 @@ namespace Steam2.Controllers
         public async Task<IActionResult> RemoveSaleId(string SaleId, string GameId)
         {
             //_context.Update()
-            Game saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
+            Game? saleGame = _context.Game.Where(x => x.Id == GameId).FirstOrDefault();
             if (saleGame != null)
             {
                 saleGame.SaleId = "";

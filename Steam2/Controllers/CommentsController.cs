@@ -44,10 +44,10 @@ namespace Steam2.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create(string Id)
+        public IActionResult Create(string GameId)
         {
             Comment comment = new Comment();
-            comment.GamesID = Id;
+            comment.GamesID = GameId;
 
             return View(comment);
         }
