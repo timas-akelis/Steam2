@@ -67,14 +67,37 @@
     <table class="table">
         <h4>Comments</h4>
         <tbody>
+        <thead>
+            <tr>
+                <th>
+                    Comment
+                </th>
+                <th>
+                    Like
+                </th>
+                <th>
+                    Dislike
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
             @foreach (var item in Model.Comment){
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProfileID)
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>    
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositiveCount)
+                </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.NegativeCount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>            
+                    <a asp-action="LikeComment" asp-route-id="@item.Id">Like</a> |
+                    <a asp-action="DislikeComment" asp-route-id="@item.Id">Dislike</a>
+                </td>
             </tr>
             }
         </tbody>
