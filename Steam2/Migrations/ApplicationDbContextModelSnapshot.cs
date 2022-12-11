@@ -323,6 +323,10 @@ namespace Steam2.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CreatorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

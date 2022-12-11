@@ -46,52 +46,8 @@ namespace Steam2.Controllers
                 }
             }
             StringBuilder buildId = new StringBuilder();
-            /*
-            Genre genre1 = new Genre();
-            genre1.Id = Extension.CreateId();
-            genre1.Name = "RPG";
-            genre1.Description = "Role Playing Game";
-            buildId = new StringBuilder();
-            foreach (Game game in _context.Game.ToList())
-            {
-                buildId.Append(game.Id);
-                buildId.Append(';');
-            }
-            buildId.Remove(buildId.Length - 1, 1);
-            genre1.GamesID = buildId.ToString();
-            _context.Genre.Add(genre1);
 
-            Genre genre2 = new Genre();
-            genre2.Id = Extension.CreateId();
-            genre2.Name = "Puzzle";
-            genre2.Description = "Thinking things";
-            buildId = new StringBuilder();
-            foreach (Game game in _context.Game.Where(x => x.Price > 15).ToList())
-            {
-                buildId.Append(game.Id);
-                buildId.Append(';');
-            }
-            buildId.Remove(buildId.Length - 1, 1);
-            genre2.GamesID = buildId.ToString();
-            _context.Genre.Add(genre2);
-            _context.SaveChanges();
-
-            Genre genre3 = new Genre();
-            genre3.Id = Extension.CreateId();
-            genre3.Name = "Action";
-            genre3.Description = "Do things fast";
-            buildId = new StringBuilder();
-            foreach (Game game in _context.Game.Where(x => x.Price > 450).ToList())
-            {
-                buildId.Append(game.Id);
-                buildId.Append(';');
-            }
-            buildId.Remove(buildId.Length - 1, 1);
-            genre3.GamesID = buildId.ToString();
-            _context.Genre.Add(genre3);
-            _context.SaveChanges();*/
-
-            GamesSales VM = new GamesSales(_context.Game.ToList(), _context.Sales.ToList());
+            GamesSales VM = new GamesSales(_context.Game.ToList(), _context.Sales.ToList(), GetId());
             return View(VM);
         }
 
@@ -210,6 +166,7 @@ namespace Steam2.Controllers
             game.Id = Extension.CreateId();
             game.SaleId = "None";
             game.PublishingDate = DateTime.Now;
+            game.CreatorId = GetId();
 
             _context.Add(game);
             await _context.SaveChangesAsync();

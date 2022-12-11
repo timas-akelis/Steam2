@@ -11,6 +11,7 @@
         public string Developer { get; set; }
         public string Publisher { get; set; }
         public string SaleId { get; set; }
+        public string CreatorId { get; set; }
         public Game()
         {
 
