@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,8 +44,7 @@ namespace Steam2.Controllers
             return View(genre);
         }
 
-        // GET: Genres/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
@@ -56,13 +56,19 @@ namespace Steam2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,GamesID")] Genre genre)
         {
-            if (ModelState.IsValid)
+            genre.Id = Extension.CreateId();
+            StringBuilder buildId = new StringBuilder();
+            foreach (Game game in _context.Game.Where(x => x.Price > 450).ToList())
             {
-                _context.Add(genre);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                buildId.Append(game.Id);
+                buildId.Append(';');
             }
-            return View(genre);
+            buildId.Remove(buildId.Length - 1, 1);
+            genre.GamesID = buildId.ToString();
+            _context.Genre.Add(genre);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Genres/Edit/5

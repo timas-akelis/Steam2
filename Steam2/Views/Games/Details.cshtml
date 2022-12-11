@@ -1,4 +1,4 @@
-﻿@model Steam2.Models.Game
+﻿@model Steam2.Models.ViewModels.GameGenreAchievementComment
 
 @{
     ViewData["Title"] = "Details";
@@ -11,56 +11,58 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Game.Title)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Game.Title)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PublishingDate)
+            @Html.DisplayNameFor(model => model.Game.PublishingDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PublishingDate)
+            @Html.DisplayFor(model => model.Game.PublishingDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Game.Price)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Game.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.Game.Rating)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
+            @Html.DisplayFor(model => model.Game.Rating)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Game.Description)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Game.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Developer)
+            @Html.DisplayNameFor(model => model.Game.Developer)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Developer)
+            @Html.DisplayFor(model => model.Game.Developer)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Publisher)
+            @Html.DisplayNameFor(model => model.Game.Publisher)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Publisher)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SaleId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SaleId)
+            @Html.DisplayFor(model => model.Game.Publisher)
         </dd>
     </dl>
+    Genres:
+    @foreach (string genre in Model.ListedGenres) 
+    {
+        @genre
+    }
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (ViewData["Creator"] != null)
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Game.Id">Edit</a>
+    }
     <a asp-action="Index">Back to List</a>
 </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,52 @@ namespace Steam2.Controllers
                     }
                 }
             }
+            StringBuilder buildId = new StringBuilder();
+            /*
+            Genre genre1 = new Genre();
+            genre1.Id = Extension.CreateId();
+            genre1.Name = "RPG";
+            genre1.Description = "Role Playing Game";
+            buildId = new StringBuilder();
+            foreach (Game game in _context.Game.ToList())
+            {
+                buildId.Append(game.Id);
+                buildId.Append(';');
+            }
+            buildId.Remove(buildId.Length - 1, 1);
+            genre1.GamesID = buildId.ToString();
+            _context.Genre.Add(genre1);
+
+            Genre genre2 = new Genre();
+            genre2.Id = Extension.CreateId();
+            genre2.Name = "Puzzle";
+            genre2.Description = "Thinking things";
+            buildId = new StringBuilder();
+            foreach (Game game in _context.Game.Where(x => x.Price > 15).ToList())
+            {
+                buildId.Append(game.Id);
+                buildId.Append(';');
+            }
+            buildId.Remove(buildId.Length - 1, 1);
+            genre2.GamesID = buildId.ToString();
+            _context.Genre.Add(genre2);
+            _context.SaveChanges();
+
+            Genre genre3 = new Genre();
+            genre3.Id = Extension.CreateId();
+            genre3.Name = "Action";
+            genre3.Description = "Do things fast";
+            buildId = new StringBuilder();
+            foreach (Game game in _context.Game.Where(x => x.Price > 450).ToList())
+            {
+                buildId.Append(game.Id);
+                buildId.Append(';');
+            }
+            buildId.Remove(buildId.Length - 1, 1);
+            genre3.GamesID = buildId.ToString();
+            _context.Genre.Add(genre3);
+            _context.SaveChanges();*/
+
             GamesSales VM = new GamesSales(_context.Game.ToList(), _context.Sales.ToList());
             return View(VM);
         }
@@ -63,7 +110,37 @@ namespace Steam2.Controllers
                 return NotFound();
             }
 
-            return View(game);
+            //List<List<string>> ListedGenres = _context.Genre.ToList().Select(x => x.GamesID).Select(s => s.Split(';').ToList()).ToList();
+            // Are you ready to witness the POWER of lambda?
+            // BEHOLD
+            /*List<string> ConFiltered = _context.Genre.ToList().Select(x => x.GamesID)
+                                            .Select(s => s.Split(';').ToList())
+                                            .Where(lst => lst.Contains(id))
+                                            .Select(lst => string.Join(";", lst))
+                                            .ToList();
+            
+            good thing it doesnt work
+            well, it could work, but i already dont get it
+            thanks chatgpt
+             */
+
+            List<string> AppliedGenres = new List<string>();
+            foreach (Genre genre in _context.Genre.ToList())
+            {
+                List<string> ids = genre.GamesID.Split(';').ToList();
+                foreach (string gameId in ids)
+                {
+                    if (gameId == id)
+                    {
+                        AppliedGenres.Add(genre.Name);
+                        break;
+                    }
+                }
+            }
+
+            GameGenreAchievementComment VM = new GameGenreAchievementComment(game, AppliedGenres, new Achievement(), new Comment());
+
+            return View(VM);
         }
 
         public async Task<IActionResult> AddSaleId(string SaleId, string GameId)

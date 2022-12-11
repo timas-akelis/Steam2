@@ -43,6 +43,12 @@
                 <th>
                     Sale actions
                 </th>
+                <th>
+                    Applied Genres
+                </th>
+                <th>
+                    Genre actions
+                </th>
             }
             <th></th>
         </tr>
@@ -80,9 +86,9 @@
                 @foreach (var sale in Model.Sales)
                 {
                     <a asp-action="AddSaleId" asp-route-SaleId="@sale.Id" asp-route-GameId="@item.Id">Add to @sale.Name | </a>
-
-                }                <a asp-action="RemoveSaleId" asp-route-GameId="@item.Id">Remove from sale | </a>
-            </td>
+                }                
+                <a asp-action="RemoveSaleId" asp-route-GameId="@item.Id">Remove from sale | </a>
+                </td>
             }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
