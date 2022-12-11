@@ -60,10 +60,32 @@
     }
 </div>
 <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Game.Id">Edit</a>
+    <a asp-action="AddAchievement" asp-route-id="@Model?.Game.Id">Add an achievement</a>
     @if (ViewData["Creator"] != null)
     {
         <a asp-action="Edit" asp-route-id="@Model?.Game.Id">Edit</a>
+        <a asp-action="AddAchievement" asp-route-id="@Model?.Game.Id">Add an achievement</a>
     }
+    else {
+        @ViewData["Creator"]
+    }
+    <table class="table">
+        <h4>Achievements</h4>
+        <tbody>
+            @foreach (var item in Model.Achievement)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
     <table class="table">
         <h4>Comments</h4>
         <tbody>

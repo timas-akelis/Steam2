@@ -94,8 +94,9 @@ namespace Steam2.Controllers
                 }
             }
             var comments = await _context.Comment.Where(x => x.GamesID == game.Id).ToListAsync();
+            var achievements = _context.Achievement.Where(x => x.GamesID == game.Id).Where(p => p.ProfileID == GetId()).ToList();
 
-            GameGenreAchievementComment VM = new GameGenreAchievementComment(game, AppliedGenres, new Achievement(), comments);
+            GameGenreAchievementComment VM = new GameGenreAchievementComment(game, AppliedGenres, achievements, comments);
 
             return View(VM);
         }
@@ -270,19 +271,14 @@ namespace Steam2.Controllers
         [Authorize]
         public async Task<IActionResult> AddWishlist(string id)
         {
-            //if (id == null || _context.Game == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var game = await _context.Game.FindAsync(id);
-            //if (game == null)
-            //{
-            //    return NotFound();
-            //}
-            //return NotFound();
             string ProfileId = GetId();
             return RedirectToAction("Create", "Wishlists", new { GameId = id });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> AddAchievement(string id)
+        {
+            return RedirectToAction("Create", "Achievements", new { GameId = id});
         }
 
         private bool GameExists(string id)

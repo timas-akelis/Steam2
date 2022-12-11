@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -44,25 +45,25 @@ namespace Steam2.Controllers
         }
 
         // GET: Achievements/Create
-        public IActionResult Create()
+        public IActionResult Create(string GameID)
         {
-            return View();
+            Achievement achievement = new Achievement();
+            achievement.GamesID = GameID;
+            return View(achievement);
         }
 
         // POST: Achievements/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,GamesID,ProfileID,Icon,Achieved,Acquired,PlayerPerc")] Achievement achievement)
+        public async Task<IActionResult> Create2([Bind("Id,Name,Description,GamesID,ProfileID,Icon,Achieved,Acquired,PlayerPerc")] Achievement achievement)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(achievement);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(achievement);
+            achievement.Id = Extension.CreateId();
+            achievement.ProfileID = GetId();
+            achievement.PlayerPerc = 0;
+
+            _context.Add(achievement);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Games");
         }
 
         // GET: Achievements/Edit/5
@@ -156,6 +157,23 @@ namespace Steam2.Controllers
         private bool AchievementExists(string id)
         {
           return _context.Achievement.Any(e => e.Id == id);
+        }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
         }
     }
 }
