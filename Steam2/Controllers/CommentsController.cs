@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -55,16 +56,18 @@ namespace Steam2.Controllers
         // POST: Comments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        public async Task<IActionResult> Create2(string GameId, [Bind("Id,Description,GamesID,ProfileID,CreatedDate,PositiveCount,NegativeCount,Edited")] Comment comment)
+        public async Task<IActionResult> Create2([Bind("Id,Description,GamesID,ProfileID,CreatedDate,PositiveCount,NegativeCount,Edited")] Comment comment)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(comment);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
 
-            return View();
+            comment.Id = Extension.CreateId();
+            comment.ProfileID = GetId();
+            comment.CreatedDate = DateTime.Now;
+            comment.PositiveCount = 0;
+            comment.NegativeCount = 0;
+            comment.Edited = false;
+            _context.Add(comment);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", "Games", new { Id = comment.GamesID });
         }
 
         // GET: Comments/Edit/5
@@ -158,6 +161,23 @@ namespace Steam2.Controllers
         private bool CommentExists(string id)
         {
           return _context.Comment.Any(e => e.Id == id);
+        }
+
+        private string GetId()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    return userIdClaim.Value;
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

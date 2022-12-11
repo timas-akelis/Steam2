@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
 using Microsoft.EntityFrameworkCore;
 using Steam2.Data;
 using Steam2.Models;
@@ -68,7 +69,7 @@ namespace Steam2.Controllers
             decimal totalPrice = 0;
             for (int i = 0; i < carta.Count; i++)
             {
-                Game cartGame = _context.Game.Where(x => x.Id == carta[i].GamesID).FirstOrDefault();
+                Game? cartGame = _context.Game.Where(x => x.Id == carta[i].GamesID).FirstOrDefault();
                 if (cartGame != null) cartGames.Add(cartGame);
                 totalPrice += GetPriceWithSale(cartGame.Id);
             }
@@ -76,29 +77,41 @@ namespace Steam2.Controllers
             return View(cartGames);
         }
 
-        public async Task<IActionResult> ConfirmTransaction()
+        public async Task<IActionResult> BuyGamesFromApi()
         {
-            /* WHAT THE FUCK IS THIS
-            var carta = _context.Cart.ToList();
-            List<Game> allGames = new List<Game>();
-            for (int i = 0; i < carta.Count; i++)
+            using (var client = new HttpClient())
             {
-                var games = _context.Game.Where(x => x.Id == carta[i].GamesID).ToList();
-                for (int j = 0; j < games.Count; j++)
+                var endpont = new Uri("http://jsonplaceholder.typicode.com/posts");
+                try
                 {
-                    allGames.Add(games[j]);
+                    var result = client.GetAsync(endpont).Result.Content.ReadAsStringAsync().Result;
+                    if (result != null)
+                    {
+                        return RedirectToAction(nameof(ConfirmTransaction));
+                    }
+                }
+                catch
+                {
+                    return RedirectToAction(nameof(ShowError));
                 }
             }
-            List<Tuple<Game, Cart>> BoughtGames = new List<Tuple<Game, Cart>>();
-            var tuples = allGames.Zip(_context.Cart, (x, y) => new Tuple<Game, Cart>(x, y));
-            BoughtGames.AddRange(tuples);
-            string jsonGames = System.Text.Json.JsonSerializer.Serialize(BoughtGames);*/
+            return RedirectToAction(nameof(ShowError));
+        }
+
+        public async Task<IActionResult> ShowError()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ConfirmTransaction()
+        {
             var carta = _context.Cart.Where(x => x.ProfileID == GetId()).ToList();
             List<Game> cartGames = new List<Game>();
             for (int i = 0; i < carta.Count; i++)
             {
-                Game cartGame = _context.Game.Where(x => x.Id == carta[i].GamesID).FirstOrDefault();
+                Game? cartGame = _context.Game.Where(x => x.Id == carta[i].GamesID).FirstOrDefault();
                 if (cartGame != null) cartGames.Add(cartGame);
+
             }
 
             string jsonGames = System.Text.Json.JsonSerializer.Serialize<List<Game>>(cartGames);
@@ -173,10 +186,10 @@ namespace Steam2.Controllers
 
         private decimal GetPriceWithSale(string GameId)
         {
-            Game game = _context.Game.Where(m => m.Id == GameId).FirstOrDefault();
+            Game? game = _context.Game.Where(m => m.Id == GameId).FirstOrDefault();
             if (game == null) return 0;
 
-            Sales sale = _context.Sales.Where(s => s.Id == game.SaleId).FirstOrDefault();
+            Sales? sale = _context.Sales.Where(s => s.Id == game.SaleId).FirstOrDefault();
             if (sale == null) return game.Price;
 
             return game.Price - (game.Price * sale.Amount/100);

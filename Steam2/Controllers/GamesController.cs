@@ -129,18 +129,6 @@ namespace Steam2.Controllers
 
         public async Task<IActionResult> AddToLibrary(string Id)
         {
-            //Library newGame = new Library();
-            //newGame.Id = CreateId();
-            //newGame.ProfileID = GetId();
-            //newGame.GamesID = Id;
-            //newGame.Date = DateTime.Now;
-            //newGame.HoursPlayed = 0;
-            //newGame.RecentHoursPlayer = 0;
-            //string ProfileId = GetId();
-            //return RedirectToAction("Create", "Librarie", new { newGame = newGame});
-
-            //return RedirectToAction("Create", "Librarie", new { GameId = Id });
-
             return RedirectToAction("Create", "Cart", new { GameId = Id });
         }
 

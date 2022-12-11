@@ -63,7 +63,15 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [C:/Users/Rokas/Desktop/SteamDos/Steam2_FinaleBegins/Steam2/Steam2/Views/Cart/Transaction.cshtml]
+=======
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/ShowError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxTaG93RXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/timis/OneDrive/Desktop/Steam2/Steam2/Views/Cart/Transaction.cshtml]
+>>>>>>> Timas-new
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxUcmFuc2FjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
