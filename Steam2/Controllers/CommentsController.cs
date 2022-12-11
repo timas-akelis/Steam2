@@ -44,25 +44,27 @@ namespace Steam2.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public IActionResult Create(string Id)
         {
-            return View();
+            Comment comment = new Comment();
+            comment.GamesID = Id;
+
+            return View(comment);
         }
 
         // POST: Comments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,GamesID,ProfileID,CreatedDate,PositiveCount,NegativeCount,Edited")] Comment comment)
+        public async Task<IActionResult> Create2(string GameId, [Bind("Id,Description,GamesID,ProfileID,CreatedDate,PositiveCount,NegativeCount,Edited")] Comment comment)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(comment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(comment);
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(comment);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+
+            return View();
         }
 
         // GET: Comments/Edit/5

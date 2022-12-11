@@ -1,4 +1,4 @@
-﻿@model Steam2.Models.ViewModels.GameGenreAchievementComment
+@model Steam2.Models.ViewModels.GameGenreAchievementComment
 
 @{
     ViewData["Title"] = "Details";
@@ -64,5 +64,23 @@
     {
         <a asp-action="Edit" asp-route-id="@Model?.Game.Id">Edit</a>
     }
+    <table class="table">
+        <h4>Comments</h4>
+        <tbody>
+            @foreach (var item in Model.comments){
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfileID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>            
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="CreateComment" asp-route-id="@Model.game.Id">Create comment</a>
     <a asp-action="Index">Back to List</a>
 </div>

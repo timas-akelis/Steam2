@@ -137,8 +137,9 @@ namespace Steam2.Controllers
                     }
                 }
             }
+            var comments = await _context.Comment.Where(x => x.GamesID == game.Id).ToListAsync();
 
-            GameGenreAchievementComment VM = new GameGenreAchievementComment(game, AppliedGenres, new Achievement(), new Comment());
+            GameGenreAchievementComment VM = new GameGenreAchievementComment(game, AppliedGenres, new Achievement(), comments);
 
             return View(VM);
         }
@@ -184,6 +185,11 @@ namespace Steam2.Controllers
             //return RedirectToAction("Create", "Librarie", new { GameId = Id });
 
             return RedirectToAction("Create", "Cart", new { GameId = Id });
+        }
+
+        public async Task<IActionResult> CreateComment(string Id)
+        {
+            return RedirectToAction("Create", "Comments", new { GameId = Id });
         }
 
         // GET: Games/Create
