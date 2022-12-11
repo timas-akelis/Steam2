@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Steam2.Data;
 using Steam2.Models;
+using Steam2.Models.GamesComments;
 
 namespace Steam2.Controllers
 {
@@ -39,6 +40,7 @@ namespace Steam2.Controllers
                     }
                 }
             }
+
             return View(await _context.Game.ToListAsync());
         }
 
@@ -57,7 +59,10 @@ namespace Steam2.Controllers
                 return NotFound();
             }
 
-            return View(game);
+            var comments = await _context.Comment.Where(x => x.GamesID == game.Id).ToListAsync();
+            GamesComments result = new GamesComments(game, comments);
+
+            return View(result);
         }
 
         public async Task<IActionResult> AddToLibrary(string Id)
@@ -75,6 +80,11 @@ namespace Steam2.Controllers
             //return RedirectToAction("Create", "Librarie", new { GameId = Id });
 
             return RedirectToAction("Create", "Cart", new { GameId = Id });
+        }
+
+        public async Task<IActionResult> CreateComment(string Id)
+        {
+            return RedirectToAction("Create", "Comments", new { GameId = Id });
         }
 
         // GET: Games/Create
